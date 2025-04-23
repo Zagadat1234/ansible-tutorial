@@ -5,6 +5,7 @@
   tasks:
 
   - name: install updates (Ubuntu)
+    tags: always
     apt:
       upgrade: dist
       update_cache: yes
@@ -14,6 +15,7 @@
   tasks:
 
   - name: install apache and php for Ubuntu servers
+    tags: apache,apache2, ubuntu
     apt:
       name:
         - apache2
