@@ -1,3 +1,5 @@
-[all]
-192.168.250.170 ansible_user=zagadat1
-192.168.250.146 ansible_user=zagadat2
+[web_servers]
+192.168.250.170 ansible_user=zagadat1 apache_package=apache2 php_package=libapache2-mod-php
+
+[db_servers]
+192.168.250.146 ansible_user=zagadat2 apache_package=apache2 php_package=libapache2-mod-php
