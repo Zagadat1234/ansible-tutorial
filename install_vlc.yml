@@ -1,0 +1,9 @@
+- name: Install VLC on all hosts
+  hosts: all
+  become: true
+  tasks:
+    - name: Install VLC
+      apt:
+        name: vlc
+        state: present
+        update_cache: yes

@@ -1,0 +1,40 @@
+---
+- name: Install visual studio code on Ubuntu hosts
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install required dependencies
+      apt:
+        name:
+          - wget
+          - gpg
+          - apt-transport-https
+          - software-properties-common
+        state: present
+        update_cache: yes
+
+    - name: Copy Microsoft GPG key to trusted keyring
+      copy:
+        src: files/microsoft.asc
+        dest: /etc/apt/trusted.gpg.d/microsoft.asc
+        mode: '0644'
+
+    - name: Add VS Code repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+        state: present
+        filename: vscode
+
+
+    - name: Add VS Code repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+        state: present
+        filename: "vscode"
+
+    - name: Install Visual Studio Code
+      apt:
+        name: code
+        state: present
+        update_cache: yes
